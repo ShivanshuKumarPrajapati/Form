@@ -1,10 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useContext } from "react";
+import { Info } from "./utils/Store";
 import './Wizard.css'
 
 const Wizard = () => {
   
-  const [activeStep, setActiveIndex] = useState(0);
+  const { state, dispatch } = useContext(Info);
+
+  const activeStep = state.currStep;
   const steps = [
     {
       index: 0,
@@ -26,8 +29,8 @@ const Wizard = () => {
 
 
   return (
-    <div className="container">
-      <ul className="progress-indicator">
+    <div className=" px-auto ">
+      <ul className="progress-indicator flex flex-wrap justify-content">
         {steps.map((step) => (
           <li
             key={step.index}
@@ -38,28 +41,10 @@ const Wizard = () => {
             `}
           >
             <span className="step-number">{step.index + 1}</span>
-            <h3 className="w-80 break-words ">{step.label}</h3>
+            <h3 className="min-w-80 flex flex-wrap label">{step.label}</h3>
           </li>
         ))}
       </ul>
-      <div className="actions">
-        {activeStep > 0 && (
-          <button
-            onClick={() => setActiveIndex(activeStep - 1)}
-            className="progress-button prev"
-          >
-            Previous Step
-          </button>
-        )}
-        {activeStep < steps.length - 1 && (
-          <button
-            onClick={() => setActiveIndex(activeStep + 1)}
-            className="progress-button next"
-          >
-            Next Step
-          </button>
-        )}
-      </div>
     </div>
   );
 

@@ -1,8 +1,9 @@
 import { createContext, useReducer } from "react";
 
-export const Store = createContext();
+export const Info = createContext();
 
 const initialState = {
+    currStep: 0,
     data: {
         bookingPartyInfo: [{
             firstName: "",
@@ -31,11 +32,32 @@ const initialState = {
 
 
 function reducer(state, action) {
-    return state;
+    switch (action.type) {
+        case "NEXT_STEP":
+            return {
+                ...state,
+                currStep: state.currStep + 1
+            };
+        case "PREV_STEP":
+            return {
+                ...state,
+                currStep: state.currStep - 1
+            };
+        case "UPDATE_DATA":
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    ...action.payload
+                }
+            };
+        default:
+            return state;
+    }
 }
 
 export function StoreProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initialState);
     const value = { state, dispatch };
-    return <Store.Provider value={value}>{children}</Store.Provider>;
+    return <Info.Provider value={value}>{children}</Info.Provider>;
 }
