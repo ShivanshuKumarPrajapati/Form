@@ -6,7 +6,8 @@ const initialState = {
     currStep: 0,
     data: {
         bookingPartyInfo: {},
-        opposingPartyInfo: {}
+        opposingPartyInfo: {},
+        additionalInfo: {},
     }
 };
 
@@ -37,7 +38,18 @@ function reducer(state, action) {
 									...action.payload.opposingPartyInfo,
 								},
 							},
-						};
+            };
+        case "UPDATE_ADDITIONAL_DATA":
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    additionalInfo: {
+                        ...state.data.additionalInfo,
+                        ...action.payload.additionalInfo,
+                    },
+                },
+            };
         default:
             return state;
     }

@@ -398,7 +398,6 @@ const PartyInfoForm = () => {
 	
 	const { state, dispatch } = useContext(Info);
 	const { data } = state;
-	const navigate = useNavigate();
 
 	const {
 		handleSubmit,
@@ -440,7 +439,8 @@ const PartyInfoForm = () => {
 	}, [setValue,data]);
 
     
-	const submitHandler = (formData) => {
+	const submitHandler = (e, formData) => {
+		e.preventDefault();
 		const {
 			Name,
 			bookingContactName,
@@ -474,7 +474,6 @@ const PartyInfoForm = () => {
 			},
 		});
 		dispatch({ type: "NEXT_STEP" });
-		// navigate("/party");
 		
 	}
 
