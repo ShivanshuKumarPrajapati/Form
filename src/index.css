@@ -24,3 +24,38 @@ code {
     monospace;
 }
 
+input{
+  border:2px solid black !important;
+  border-radius: 5px !important;
+  padding: 2px 10px !important;
+}
+
+input:focus{
+  border:2px solid #1a202c !important;
+}
+
+.icon{
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  position: relative;
+  top: 4px;
+}
+
+.icon1{
+  width: 25px;
+  height: 25px;
+  margin-left: 2px;
+  position: relative;
+}
+
+.top{
+  display: grid !important;
+  grid-template-rows: min-content 1fr !important;
+}
+
+.btn{
+  position: absolute !important;
+  bottom: 5% !important;
+  right: 10% !important;
+}

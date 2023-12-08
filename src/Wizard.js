@@ -29,7 +29,7 @@ const Wizard = () => {
 
 
   return (
-    <div className=" px-auto ">
+    <div className=" px-auto mb-8">
       <ul className="progress-indicator flex flex-wrap justify-content">
         {steps.map((step) => (
           <li

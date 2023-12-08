@@ -7,15 +7,15 @@ import AdditionalServiceInfo from './Component/AdditionalService';
 
 function App() {
   return (
-      <Router>
-        <Routes>
-          <Route path="/" element={ <InitialInfo /> } />
-          <Route path="/party" element={ <PartyInfo /> } />
-          <Route path="/logistics" element={ <LogisticsInfo /> } />
-          <Route path="/additional" element={ <AdditionalServiceInfo /> } />
-        </Routes>
-      </Router>
-  );
+		<Router>
+			<Routes>
+				<Route exact path="/" element={<InitialInfo />} />
+				<Route path="/party" element={<PartyInfo />} />
+				<Route path="/logistics" element={<LogisticsInfo />} />
+				<Route path="/additional" element={<AdditionalServiceInfo />} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;

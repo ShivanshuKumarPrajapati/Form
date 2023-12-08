@@ -5,28 +5,8 @@ export const Info = createContext();
 const initialState = {
     currStep: 0,
     data: {
-        bookingPartyInfo: [{
-            firstName: "",
-            bookingContactName: "",
-            PhoneNumber: "",
-            BillingAddress: "",
-            ZipCode: "",
-            Country: "",
-            Role: "",
-            representativeClient: "",
-            Email:""
-        }],
-        opposingPartyInfo: [{
-            firstName: "",
-            bookingContactName: "",
-            PhoneNumber: "",
-            BillingAddress: "",
-            ZipCode: "",
-            Country: "",
-            Role: "",
-            representativeClient: "",
-            Email:""
-        }],
+        bookingPartyInfo: {},
+        opposingPartyInfo: {}
     }
 };
 
@@ -43,14 +23,21 @@ function reducer(state, action) {
                 ...state,
                 currStep: state.currStep - 1
             };
-        case "UPDATE_DATA":
+        case "UPDATE_PARTY_DATA":
             return {
-                ...state,
-                data: {
-                    ...state.data,
-                    ...action.payload
-                }
-            };
+							...state,
+							data: {
+								...state.data,
+								bookingPartyInfo: {
+									...state.data.bookingPartyInfo,
+									...action.payload.bookingPartyInfo,
+								},
+								opposingPartyInfo: {
+									...state.data.opposingPartyInfo,
+									...action.payload.opposingPartyInfo,
+								},
+							},
+						};
         default:
             return state;
     }
